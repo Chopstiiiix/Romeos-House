@@ -209,6 +209,27 @@ section{position:relative}
 .membership h2.display{color:var(--crimson)}
 .membership .intro{max-width:720px;margin-top:18px;font-size:1.02rem;color:#5a2b22}
 
+/* heading + photo cluster. Two columns on desktop, stacked below 900px.
+   .intro keeps its own max-width, so cap the text column here instead. */
+.member-head{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);
+  gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.member-head .intro{max-width:56ch}
+
+/* Photo mount: white border + warm shadow, tilted like the tape notes.
+   Source frames are 360x640, so they are held small enough to stay sharp. */
+.shots{display:flex;justify-content:flex-end;align-items:flex-start;gap:clamp(10px,1.6vw,20px)}
+.shots figure{margin:0;padding:9px 9px 9px;background:#fff;
+  box-shadow:0 16px 38px rgba(42,10,14,.20);
+  border:1px solid rgba(176,128,40,.35);
+  transition:transform .5s var(--ease)}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover}
+/* Stagger only when a second frame is present, so one image sits straight. */
+.shots figure:first-child:not(:only-child){transform:rotate(-2.5deg)}
+.shots figure:last-child:not(:only-child){transform:rotate(2deg) translateY(26px)}
+.shots figure:only-child{transform:rotate(-1.5deg);max-width:280px}
+.shots figure:hover{transform:rotate(0) translateY(0) scale(1.02)}
+@media (prefers-reduced-motion:reduce){.shots figure{transition:none}}
+
 .flagships{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px}
 .tier{border:1px solid rgba(146,25,28,.22);border-radius:6px;padding:34px 32px;background:#fff7e6;
   transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
@@ -259,6 +280,9 @@ section{position:relative}
 /* ================= RESPONSIVE ================= */
 @media (max-width:900px){
   .spaces{grid-template-columns:repeat(2,1fr)}
+  .member-head{grid-template-columns:1fr;gap:2.5rem}
+  .shots{justify-content:flex-start}
+  .shots figure:only-child{max-width:230px}
   .flagships{grid-template-columns:1fr}
   .tiers-row{grid-template-columns:repeat(2,1fr)}
   .club{grid-template-columns:32px 1fr;gap:6px 16px}
@@ -361,9 +385,17 @@ section{position:relative}
 <!-- ================= MEMBERSHIP ================= -->
 <section class="membership" id="membership">
   <div class="wrap">
-    <span class="eyebrow reveal">Membership</span>
-    <h2 class="display reveal" style="margin-top:14px">Become a Roomie.</h2>
-    <p class="intro reveal">Six ways in — from a single evening to a full year with a seat at the table on how the House is run. All members get priority access, guest passes and direct input on programming.</p>
+    <div class="member-head">
+      <div>
+        <span class="eyebrow reveal">Membership</span>
+        <h2 class="display reveal" style="margin-top:14px">Become a Roomie.</h2>
+        <p class="intro reveal">Six ways in — from a single evening to a full year with a seat at the table on how the House is run. All members get priority access, guest passes and direct input on programming.</p>
+      </div>
+      <!-- Drop a second <figure> in here and the pair staggers automatically. -->
+      <div class="shots reveal">
+        <figure><img src="assets/pour-01.jpg" alt="A measure poured over hand-carved ice at the bar" width="360" height="640" loading="lazy" /></figure>
+      </div>
+    </div>
 
     <!-- flagship tiers -->
     <div class="flagships">
