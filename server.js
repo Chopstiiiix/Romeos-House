@@ -86,17 +86,13 @@ function handler(req, res) {
   });
 }
 
-// Bind both loopback addresses, not just 127.0.0.1: "localhost" resolves to ::1
-// first on macOS, so an IPv4-only bind makes cloudflared's
-// `service: http://localhost:8010` fail with connection refused -> 502.
-// Loopback only, never 0.0.0.0 — the tunnel is the sole way in.
+// Loopback only — the Cloudflare tunnel is the sole way in. cloudflared falls
+// back to IPv4 when ::1 refuses, so binding 127.0.0.1 alone is enough; this
+// matches how every containerised service on this host binds.
 if (require.main === module) {
-  for (const host of ["127.0.0.1", "::1"]) {
-    http
-      .createServer(handler)
-      .on("error", (e) => console.error(`bind ${host}:${PORT} failed: ${e.code}`))
-      .listen(PORT, host, () => console.log(`serving ${ROOT} on ${host}:${PORT}`));
-  }
+  http
+    .createServer(handler)
+    .listen(PORT, "127.0.0.1", () => console.log(`serving ${ROOT} on 127.0.0.1:${PORT}`));
 }
 
 module.exports = { parseRange, resolve };
