@@ -211,23 +211,26 @@ section{position:relative}
 
 /* heading + photo cluster. Two columns on desktop, stacked below 900px.
    .intro keeps its own max-width, so cap the text column here instead. */
-.member-head{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);
+.member-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
   gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .member-head .intro{max-width:56ch}
 
 /* Photo mount: white border + warm shadow, tilted like the tape notes.
-   Source frames are 360x640, so they are held small enough to stay sharp. */
-.shots{display:flex;justify-content:flex-end;align-items:flex-start;gap:clamp(10px,1.6vw,20px)}
-.shots figure{margin:0;padding:9px 9px 9px;background:#fff;
+   3/4 frame, not 9/16 — a narrower crop clips the lettering carved into the
+   ice. Both sources are portrait, so they lose a little top and bottom. */
+.shots{display:flex;justify-content:flex-end;align-items:flex-start}
+.shots figure{margin:0;padding:9px;background:#fff;position:relative;
   box-shadow:0 16px 38px rgba(42,10,14,.20);
   border:1px solid rgba(176,128,40,.35);
   transition:transform .5s var(--ease)}
-.shots img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover}
-/* Stagger only when a second frame is present, so one image sits straight. */
-.shots figure:first-child:not(:only-child){transform:rotate(-2.5deg)}
-.shots figure:last-child:not(:only-child){transform:rotate(2deg) translateY(26px)}
-.shots figure:only-child{transform:rotate(-1.5deg);max-width:280px}
-.shots figure:hover{transform:rotate(0) translateY(0) scale(1.02)}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+/* A pair overlaps and counter-rotates; the branded frame leads, in front. */
+/* 58 + 50 - 10 = 98%, so the tilted pair never pushes past its column. */
+.shots figure:first-child{width:58%;z-index:2;transform:rotate(-2.5deg)}
+.shots figure:first-child:not(:only-child) + figure{
+  width:50%;margin-left:-10%;margin-top:13%;z-index:1;transform:rotate(2.5deg)}
+.shots figure:only-child{width:auto;max-width:280px;transform:rotate(-1.5deg)}
+.shots figure:hover{transform:rotate(0) scale(1.03);z-index:3}
 @media (prefers-reduced-motion:reduce){.shots figure{transition:none}}
 
 .flagships{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px}
@@ -281,7 +284,7 @@ section{position:relative}
 @media (max-width:900px){
   .spaces{grid-template-columns:repeat(2,1fr)}
   .member-head{grid-template-columns:1fr;gap:2.5rem}
-  .shots{justify-content:flex-start}
+  .shots{justify-content:flex-start;max-width:440px}
   .shots figure:only-child{max-width:230px}
   .flagships{grid-template-columns:1fr}
   .tiers-row{grid-template-columns:repeat(2,1fr)}
@@ -391,8 +394,8 @@ section{position:relative}
         <h2 class="display reveal" style="margin-top:14px">Become a Roomie.</h2>
         <p class="intro reveal">Six ways in — from a single evening to a full year with a seat at the table on how the House is run. All members get priority access, guest passes and direct input on programming.</p>
       </div>
-      <!-- Drop a second <figure> in here and the pair staggers automatically. -->
       <div class="shots reveal">
+        <figure><img src="assets/ice-01.jpg" alt="A Romeo's House branded ice block in a negroni with an orange twist" width="900" height="1350" loading="lazy" /></figure>
         <figure><img src="assets/pour-01.jpg" alt="A measure poured over hand-carved ice at the bar" width="360" height="640" loading="lazy" /></figure>
       </div>
     </div>
