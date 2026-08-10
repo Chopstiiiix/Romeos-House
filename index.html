@@ -155,8 +155,13 @@ header.scrolled{
   animation:breathe 7s var(--ease) infinite;
 }
 @keyframes breathe{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:.9;transform:translate(-50%,-50%) scale(1.08)}}
-.hero-logo{width:min(500px,74vw);margin:0 auto 26px;
-  filter:drop-shadow(0 8px 30px rgba(0,0,0,.5));
+/* The crest is portrait (610x800), so it's sized by HEIGHT — width-driven sizing
+   on a 0.76 ratio mark pushes the tagline and CTAs below the fold on a laptop.
+   The drop-shadow is heavier than the old wordmark's: the artwork's deep maroon
+   sits close to the darkened video behind it and needs the lift. */
+.hero-logo{height:min(44vh,400px);width:auto;max-width:80vw;
+  display:block;margin:0 auto 26px;
+  filter:drop-shadow(0 6px 24px rgba(0,0,0,.8)) drop-shadow(0 2px 6px rgba(0,0,0,.6));
   animation:rise 1.2s var(--ease) both}
 .hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:clamp(1.3rem,2.6vw,2rem);color:var(--cream);
@@ -333,7 +338,7 @@ section{position:relative}
   <div class="hero-glow" aria-hidden="true"></div>
 
   <div class="hero-inner">
-    <img class="hero-logo" src="assets/logo.png" alt="Romeo's House" />
+    <img class="hero-logo" src="assets/hero-logo.webp" alt="Romeo's House, est. 2026" width="610" height="800" fetchpriority="high" />
     <p class="hero-tag">A members' house for the curious minded.</p>
     <p class="hero-sub">Music, cocktails and quiet creative company — behind one gold door on Victoria Island, Lagos.</p>
     <div class="hero-cta">
