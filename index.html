@@ -123,7 +123,7 @@ header.scrolled{
   font-family:'Jost',sans-serif;
   font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
   color:var(--oxblood-deep);background:var(--gold);
-  padding:11px 22px;border-radius:2px;border:1px solid var(--gold);
+  display:inline-block;padding:11px 22px;border-radius:2px;border:1px solid var(--gold);
   transition:background .3s,transform .3s,color .3s;cursor:pointer;
 }
 .btn:hover{background:var(--gold-bright);transform:translateY(-2px)}
@@ -261,13 +261,17 @@ section{position:relative}
 
 .tiers-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:24px}
 .mini{border:1px solid rgba(146,25,28,.2);border-radius:6px;padding:24px 22px;background:#fff7e6;
+  display:flex;flex-direction:column;
   transition:transform .35s var(--ease),background .35s}
 .mini:hover{transform:translateY(-4px);background:#fff}
 .mini h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--crimson)}
 .mini .dur{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin:2px 0 14px}
 .mini .fee{font-size:1.3rem;font-weight:600;color:var(--ink)}
 .mini .fee small{display:block;font-size:.7rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:2px}
-.mini p{font-size:.82rem;margin-top:12px;opacity:.8}
+.mini p{font-size:.82rem;margin-top:12px;margin-bottom:22px;opacity:.8}
+/* Signup CTAs -> the membership backend at app.mycentreoffice.com, one link per tier. */
+.tier-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.mini .btn{margin-top:auto;align-self:flex-start}
 
 /* ================= CONTACT / FOOTER ================= */
 .contact{background:linear-gradient(180deg,var(--oxblood-deep),var(--oxblood));
@@ -366,6 +370,7 @@ section{position:relative}
     <a href="#clubs">Social Clubs</a>
     <a href="#membership">Membership</a>
     <a href="#book">Book</a>
+    <a href="https://romeoshouse.mycentreoffice.com/">Shop</a>
     <a href="#contact">Contact</a>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
@@ -386,7 +391,7 @@ section{position:relative}
     <p class="hero-sub">Music, cocktails and quiet creative company — behind one gold door on Victoria Island, Lagos.</p>
     <div class="hero-cta">
       <a href="#membership" class="btn">Become a Roomie</a>
-      <a href="#house" class="btn btn-ghost">Step Inside</a>
+      <a href="https://app.mycentreoffice.com/me/romeoshouse" class="btn btn-ghost">Step Inside</a>
     </div>
   </div>
   <div class="hero-note"><span class="tape">Come on in!</span></div>
@@ -466,6 +471,7 @@ section{position:relative}
           <li>Wallet balance ₦200,000 (₦250,000 couples)</li>
           <li>Direct input on programming · 4 guest passes / night</li>
         </ul>
+        <div class="tier-cta"><a class="btn" href="https://app.mycentreoffice.com/form/index?u=x5lx7fda3j4gpxiv48uhgpb5trhk5jqkd8q0rfwkzkh9dgcefbjecpso4le7pstwj88r0r4jys5ek0p86xgkzs2riplr5vh497exfduqml3em9ipvhfufre7qqhcdqvc">Join — Individual</a><a class="btn" href="https://app.mycentreoffice.com/form/index?u=rjcduxp83xmnl2iwtgdsa62vyd0oed34vj04lc69g5gt83ypq37fq7yllyikwqcq7ij6w2r7jrfg14cd4ujwz3w0dsyrkf3i1o3ipnfy0o913bv9yjcubjhg4flokozu">Join — Couple</a></div>
       </div>
       <div class="tier gold reveal">
         <div class="tier-name">Gold</div>
@@ -479,6 +485,7 @@ section{position:relative}
           <li>Wallet balance ₦100,000 (₦150,000 couples)</li>
           <li>Direct input on programming · 4 guest passes / night</li>
         </ul>
+        <div class="tier-cta"><a class="btn" href="https://app.mycentreoffice.com/form/index?u=fm5y0xrdxebl6mmkvbi4wq7cmr1ruoixjf8t9h0warnhxw2r2gw40x8ljrx3x8wgbvlgfiv1asc5hl3861d9o67swkxkbvbqol4yib95pezusza6wi9d1xolvvobpuxz">Join — Individual</a><a class="btn" href="https://app.mycentreoffice.com/form/index?u=lf1o8640fed85eq8ky3u061igggg5axo34fmv496bjse8mewnge6znkelwxu21xqmcfmc2ei8hfknpddojy3oxb0ypwrb4tbbtk5e78mi47lkhum5i2qbl4739k2fljh">Join — Couple</a></div>
       </div>
     </div>
 
@@ -489,24 +496,28 @@ section{position:relative}
         <div class="dur">12 months · under-25</div>
         <div class="fee"><small>Membership fee</small>₦700,000</div>
         <p>Subsidised tier for young creatives — musicians, DJs, artists, writers, producers, filmmakers. Entry by application + committee approval. ₦100,000 wallet · 2 guest passes.</p>
+        <a class="btn" href="https://app.mycentreoffice.com/form/index?u=k1njx57pxzknzxy96li17eoacdkeqiqr21p8rhwsrbdcak7a17z59mniulralbgyspubz84dy6jrqa4oqhez6204kspy7svn4cce3dmwjbuwxyapmtmnn7q8r41ucpmv">Apply</a>
       </div>
       <div class="mini reveal">
         <h4>Silver</h4>
         <div class="dur">3 months</div>
         <div class="fee"><small>Membership fee</small>₦350,000</div>
         <p>Priority access, ability to host curated events, direct input on programming, 1 guest pass / night.</p>
+        <a class="btn" href="https://app.mycentreoffice.com/form/index?u=tsdjjsyjxpm7h1cp8yka7t1wi3gmzun8a5pj4tjigfzo3n9g2ng1ik8ekh9714xxg3l0bu4kx8cjtmzjr4srryb8xr6ak3g8x7rujqvb8zlyz0emq6spqi6wf9gkhz3s">Join</a>
       </div>
       <div class="mini reveal">
         <h4>Bronze</h4>
         <div class="dur">1 month</div>
         <div class="fee"><small>Membership fee</small>₦150,000</div>
         <p>A month inside the House — priority access, event hosting, programming input, 1 guest pass / night.</p>
+        <a class="btn" href="https://app.mycentreoffice.com/form/index?u=ho1k1u9d5bfabf3kcbbzfk2w16lolfobdpsx18igrixic4yd8dqog43zmnqcj6ho8tj69jezsxhurt4bgvapr50aolmx5p984d8xltmbttrjo7o4fjyqr0ttpkvrg4dr">Join</a>
       </div>
       <div class="mini reveal">
         <h4>Day Pass</h4>
         <div class="dur">One-day access</div>
         <div class="fee"><small>Membership fee</small>₦20,000</div>
         <p>A single evening in. The easiest way to see if Romeo's House is your kind of room.</p>
+        <a class="btn" href="https://app.mycentreoffice.com/form/index?u=2jwyj12zyru55khwavnqw4h9ewm4ffuqm1nh4iv8yi00dh4fr0o8cby16l5otoi04lxxnkta8bgmyqjs7gv9ut8obqjk9zenfxm2qm94dmqgo5kmd06d5zqwo186djt5">Buy a pass</a>
       </div>
     </div>
   </div>
@@ -572,7 +583,8 @@ section{position:relative}
     <h2 class="display reveal" style="margin-top:12px">The door is open.</h2>
     <p class="lede reveal">7 Bishop Aboyade Cole Street, Victoria Island — four nights a week, scaling to five as the House fills.</p>
     <div class="contact-cta reveal">
-      <a href="mailto:info@romeoshouse.com?subject=Membership%20enquiry" class="btn">Enquire about membership</a>
+      <a href="https://app.mycentreoffice.com/i/romeoshouse" class="btn">Choose your membership</a>
+      <a href="mailto:info@romeoshouse.com?subject=Membership%20enquiry" class="btn btn-ghost">Enquire first</a>
     </div>
     <div class="emails reveal">
       <a href="mailto:info@romeoshouse.com">info@romeoshouse.com</a>
