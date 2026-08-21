@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop · Romeo's House</title>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+<meta name="description" content="The Romeo's House shop is on its way." />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Caveat:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Caveat:wght@600&display=swap" rel="stylesheet" /></noscript>
+
+<style>
+/* Same tokens as index.html. Duplicated rather than split into a shared
+   stylesheet because this is the only other page and it uses a handful. */
+:root{
+  --oxblood-deep:#2B0507;
+  --oxblood:#3C030E;
+  --gold:#B08028;
+  --gold-bright:#D4A94E;
+  --champagne:#E9D3A0;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:4px;padding:64px 24px;text-align:center;
+  background:
+    radial-gradient(120% 80% at 50% 20%, rgba(212,169,78,.14), transparent 60%),
+    linear-gradient(170deg,var(--oxblood) 0%,var(--oxblood-deep) 100%);
+  color:var(--champagne);
+  font-family:'Jost',sans-serif;font-weight:300;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+.seal{width:min(150px,38vw);margin-bottom:30px;animation:rise 1.2s var(--ease) both}
+.eyebrow{
+  font-weight:500;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);animation:rise 1.2s .1s var(--ease) both;
+}
+h1{
+  font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.02;
+  font-size:clamp(2.6rem,9vw,4.2rem);color:#FEF1D8;margin-top:12px;
+  animation:rise 1.2s .2s var(--ease) both;
+}
+p{
+  max-width:34ch;margin-top:18px;font-size:1rem;opacity:.9;
+  animation:rise 1.2s .3s var(--ease) both;
+}
+.btn{
+  margin-top:34px;
+  font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  color:var(--oxblood-deep);background:var(--gold);
+  padding:13px 24px;border-radius:2px;border:1px solid var(--gold);
+  transition:background .3s,transform .3s;
+  animation:rise 1.2s .4s var(--ease) both;
+}
+.btn:hover{background:var(--gold-bright);transform:translateY(-2px)}
+.tape{
+  margin-top:44px;
+  font-family:'Caveat',cursive;font-weight:600;font-size:1.25rem;
+  background:#F3E2B0;color:#3a2a08;padding:.15em .8em;
+  transform:rotate(-3deg);box-shadow:0 6px 22px rgba(0,0,0,.45);
+  animation:rise 1.2s .5s var(--ease) both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .seal,.eyebrow,h1,p,.btn,.tape{animation:none}
+  .btn{transition:none}
+}
+</style>
+</head>
+<body>
+
+<img class="seal" src="assets/seal.png" alt="Romeo's House seal, est. 2026" width="600" height="616" />
+<span class="eyebrow">Shop</span>
+<h1>Coming soon.</h1>
+<p>The House is putting the shelves up. Check back shortly.</p>
+<a class="btn" href="index.html">Back to the House</a>
+<span class="tape">Won't be long!</span>
+
+</body>
+</html>
