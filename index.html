@@ -347,16 +347,32 @@ section{position:relative}
   .wrap{padding:0 22px}
   header{padding:14px 22px}
   .nav-links{position:fixed;inset:0 0 0 auto;width:min(76vw,320px);
-    background:var(--oxblood-deep);flex-direction:column;justify-content:center;gap:26px;
+    background:var(--oxblood-deep);flex-direction:column;justify-content:center;gap:14px;
     transform:translateX(100%);transition:transform .45s var(--ease);border-left:1px solid rgba(176,128,40,.3)}
   .nav-links.open{transform:none}
-  .nav-toggle{display:block;z-index:60}
+  /* the drawer links were 21px tall; the padding brings each one to ~45px, so
+     the gap comes down to 14px to keep the spacing looking the same */
+  .nav-links a{padding:12px 8px}
+  /* the glyph alone was a 23x30 target. Negative margin absorbs the padding so
+     the icon doesn't move. */
+  .nav-toggle{display:block;z-index:60;font-size:1.8rem;padding:9px;margin:-9px}
   .hero-note{right:5%;bottom:9%}
   .tiers-row{grid-template-columns:1fr}
   .spaces{grid-template-columns:1fr 1fr}
+  /* The flagship price row is span/b/span/b on one wrapping flex line, so at
+     this width "Couples" ended up stranded on the line above its own figure.
+     Two columns pair each label with its price instead. */
+  .price{display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+  /* rates were right-aligned while the Save badge below them sat left */
+  .rates{justify-content:start}
+  .rate{text-align:left}
   .book-row{grid-template-columns:28px 1fr;gap:8px 14px}
   .book-row .rates{grid-column:2;gap:20px}
   .book-row .save{grid-column:2;justify-self:start}
+  /* 120px top and bottom on every section is a lot of empty thumb-scrolling
+     on a phone; the page loses roughly a screen and a half of dead space. */
+  .house,.clubs,.membership,.book{padding:72px 0}
+  .contact{padding:72px 0 48px}
 }
 </style>
 </head>
@@ -528,7 +544,7 @@ section{position:relative}
   <div class="wrap">
     <span class="eyebrow reveal">Book the House</span>
     <h2 class="display reveal" style="margin-top:14px">Take a room for the night.</h2>
-    <p class="intro reveal">Private hire across four spaces. Members book at the lower rate, every night of the week.</p>
+    <p class="intro reveal">Private hire across four spaces.</p>
 
     <div class="book-list">
       <div class="book-row reveal">
