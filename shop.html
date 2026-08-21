@@ -40,7 +40,9 @@ body{
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
-.seal{width:min(150px,38vw);margin-bottom:30px;animation:rise 1.2s var(--ease) both}
+/* height:auto matters — without it the height="616" attribute wins over the
+   CSS width and the crest renders as a stretched oval. */
+.seal{width:min(150px,38vw);height:auto;margin-bottom:30px;animation:rise 1.2s var(--ease) both}
 .eyebrow{
   font-weight:500;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
   color:var(--gold);animation:rise 1.2s .1s var(--ease) both;
